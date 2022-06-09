@@ -1,0 +1,22 @@
+﻿@model IEnumerable<VideoRentDemoApp.Models.Renter>
+
+<div class="list-group">
+
+	<a href="/RentedMovie" class="list-group-item list-group-item-action"><strong>All Rented Movies</strong></a>
+
+	@foreach (var item in Model)
+	{
+		<a asp-controller="RentedMovie" asp-action="Index" 
+		asp-route-id="@item.RenterId" 
+		class="list-group-item list-group-item-action @(ViewBag.SelectedRenter==item.RenterId.ToString()?"active":"")">
+		@item.FirstName @item.LastName
+		</a>
+	}
+</div>
+
+<!--class sonundaki action'a direk active ifadesi eklersek
+	foreach dongusu oldugu icin tum renter'lari aktif olarak alir ve hepsini secili gosterir
+	bu yuzden active ifadesine kosul ekliyoruz ==>
+	at(ViewBag.SelectedRenter==item.RenterId.ToString()?"active":"")
+-->
+

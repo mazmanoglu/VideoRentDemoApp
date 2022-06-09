@@ -1,0 +1,42 @@
+﻿@model IEnumerable<VideoRentDemoApp.Models.Movie>
+
+<div class="row">
+	<div class="col-md-3">
+		@await Component.InvokeAsync("RenterMenu")
+	</div>
+	<div class="col-md-9">
+		@foreach (var item in Model)
+		{
+			if (item.RenterId != null)
+			{
+				<div class="card mb-3">
+					<div class="row no-gutters">
+						<div class="col-md-3">
+							<img src="~/img/@Html.DisplayFor(modelItem => item.ImageUrl)" alt="@item.Title" class="card-img" />
+						</div>
+						<div class="col-md-9">
+							<div class="card-body">
+								<h5 class="card-title">
+									<a asp-action="Details" asp-controller="RentedMovie" asp-route-id="@item.MovieId">@Html.DisplayFor(modelItem => item.Title)</a>
+								</h5>
+								<p class="card-text"><strong>Length:</strong> @Html.DisplayFor(modelItem => item.Length) min.</p>
+								<p class="card-text"><strong>Description:</strong> @Html.DisplayFor(modelItem => item.Description)</p>
+
+								<p class="card-text">
+									<small class="text-muted">Date Release: @Html.DisplayFor(modelItem => item.DateRelease)</small>
+								</p>
+								<div class="rating-row" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+									<a class="icon" href="@Html.DisplayFor(modelitem => item.ImdbUrl)" title="IMDb" target="_blank"> <img src="/img/logo-imdb.svg" alt="IMDb" /></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			}
+		}
+	</div>
+</div>
+
+<!--<partial name="_movies" model="Model"/> movies'leri burada boyle gostermek yerine Views/Movie klasoru altina _movies isimli
+	view ekleyip buradaki uzun kodu orada yazar ve partial ile burada cagirabilirdik, ama simdilik bu sekilde yazdik.
+-->

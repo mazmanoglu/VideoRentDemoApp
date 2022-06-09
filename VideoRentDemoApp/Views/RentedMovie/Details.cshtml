@@ -1,0 +1,68 @@
+﻿@model VideoRentDemoApp.Models.Movie
+
+@{
+	ViewData["Title"] = "Details";
+}
+
+<div>
+	<h4>Details of Movie</h4>
+	<hr />
+	<dl class="row">
+		<dt class="col-sm-2">
+			<img src="~/img/@Html.DisplayFor(modelItem => modelItem.ImageUrl)" class="card-img" />
+		</dt>
+		<dd class="col-sm-10">
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Title)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Title)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Description)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Description)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Length)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Length) min.
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.DateRelease)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.DateRelease)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Genre)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Genre)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.MainActress)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.MainActress)
+		</dd>
+
+		<dt class="col-sm-2">
+			Rented By
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Renter.FirstName) @Html.DisplayFor(model => model.Renter.LastName)
+
+		</dd>
+
+	</dl>
+</div>
+<div>
+	@*	<a asp-action="Edit" asp-route-id="@Model.MovieId">Edit</a> |
+	*@	<a asp-action="Index">Back to Rented Movies</a><br />
+	@*	<a asp-action="Delete" asp-route-id="@Model.MovieId" class="btn btn-danger">Delete</a>
+	*@
+</div>

@@ -1,0 +1,78 @@
+﻿@model VideoRentDemoApp.Models.Movie
+
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h1>Update</h1>
+
+<h4>Movie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Update">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MovieId" class="control-label"></label>
+                <input asp-for="MovieId" class="form-control" />
+                <span asp-validation-for="MovieId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl" class="control-label"></label>
+                <input asp-for="ImageUrl" class="form-control" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Length" class="control-label"></label>
+                <input asp-for="Length" class="form-control" />
+                <span asp-validation-for="Length" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateRelease" class="control-label"></label>
+                <input asp-for="DateRelease" class="form-control" />
+                <span asp-validation-for="DateRelease" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Genre" class="control-label"></label>
+                <input asp-for="Genre" class="form-control" />
+                <span asp-validation-for="Genre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MainActress" class="control-label"></label>
+                <input asp-for="MainActress" class="form-control" />
+                <span asp-validation-for="MainActress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImdbUrl" class="control-label"></label>
+                <input asp-for="ImdbUrl" class="form-control" />
+                <span asp-validation-for="ImdbUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RenterId" class="control-label"></label>
+                <input asp-for="RenterId" class="form-control" />
+                <span asp-validation-for="RenterId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
