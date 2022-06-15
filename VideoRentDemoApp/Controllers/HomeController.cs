@@ -19,9 +19,18 @@ namespace VideoRentDemoApp.Controllers
 			_movieRepository = movieRepository;
 		}
 
-		public IActionResult Index()
+		//public IActionResult Index()
+		//{
+		//	var movies = _movieRepository.GetList();
+		//	return View(movies);
+		//}
+		public ViewResult Index(string searchString)
 		{
 			var movies = _movieRepository.GetList();
+			if (!String.IsNullOrEmpty(searchString))
+			{
+				movies = movies.Where(s => s.Title.ToLower().Contains(searchString.ToLower())).ToList();
+			}
 			return View(movies);
 		}
 

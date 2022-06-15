@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
 using VideoRentDemoApp.Models;
 using VideoRentDemoApp.Repos;
@@ -14,18 +15,34 @@ namespace VideoRentDemoApp.Controllers
 			_movieRepository = movieRepository;
 		}
 
-		public IActionResult Index(int? id)
+		//public IActionResult Index(int? id)
+		//{
+		//	var movies = _movieRepository.GetList();
+
+		//	if (id != null)
+		//	{
+		//		movies = movies
+		//			.Where(i => i.RenterId == id).ToList();
+		//	}
+
+		//	return View(movies);
+		//}
+
+		public ViewResult Index(string searchString, int? id)
 		{
 			var movies = _movieRepository.GetList();
-
 			if (id != null)
 			{
 				movies = movies
 					.Where(i => i.RenterId == id).ToList();
 			}
-
+			if (!String.IsNullOrEmpty(searchString))
+			{
+				movies = movies.Where(s => s.Title.ToLower().Contains(searchString.ToLower())).ToList();
+			}
 			return View(movies);
 		}
+
 		[HttpGet]
 		public IActionResult Create()
 		{

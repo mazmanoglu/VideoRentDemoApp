@@ -1,5 +1,9 @@
 ﻿@model IEnumerable<VideoRentDemoApp.Models.Movie>
 
+@{
+	ViewData["Title"] = "Index";
+}
+
 <div class="row">
 	<div class="col-md-3">
 		@await Component.InvokeAsync("RenterMenu")
